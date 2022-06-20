@@ -16,7 +16,7 @@ import exceptions.DineroInsuficienteException;
 
 class CuentaTest {
 
-    protected static void Mostrar(String mensaje){
+    protected static void mostrar(String mensaje){
         System.out.println(mensaje);
     }
 
@@ -132,14 +132,18 @@ class CuentaTest {
             exception.getMessage();
         }
 
-        Mostrar("---------- Transferencia -----------");
+        mostrar("---------- Transferencia -----------");
         banco.transferir(cuenta1, cuenta2, new BigDecimal(500));
                                             //Le pedimos el saldo de la cuenta y lo hacemos String para comparar rapido
         assertEquals("500.12345", cuenta1.getSaldo().toPlainString());
         assertEquals("1500.12345", cuenta2.getSaldo().toPlainString());
 
-        Mostrar("------------ assertRelacionBanco -------------");
+        mostrar("------------ assertRelacionBanco -------------");
         assertEquals(2 , banco.getCuentas().size());
+
+        mostrar("------------ AssertNameBank -------------");
+        assertEquals("BankMarto", cuenta1.getBanco().getNombre());
+
 
     }
 

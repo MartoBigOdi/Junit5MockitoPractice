@@ -38,6 +38,8 @@ public class Banco {
             throw new RuntimeErrorException (null, "No puede ser Null la cuenta");
         }
         this.cuentas.add(c);
+        //Asi creamos la relacion de cuenta al Banco
+        c.setBanco(this);
     }
 
 
