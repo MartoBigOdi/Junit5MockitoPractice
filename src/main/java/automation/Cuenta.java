@@ -46,7 +46,8 @@ public class Cuenta {
         return "Cuenta [persona=" + persona + ", saldo=" + saldo + "]";
     }
 
-
+    
+    //Sobre escribimos EQUALS para nuestro uso especifico
     @Override
     public boolean equals(Object object){
         //Decimos si es null o de otra clase de objectos devolve "false"
