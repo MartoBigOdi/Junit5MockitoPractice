@@ -17,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
@@ -172,9 +173,9 @@ class CuentaTest {
         try {
             banco.addCuenta(cuenta1);
             banco.addCuenta(cuenta2);
-        } catch (RuntimeException exception) {
-            exception.getMessage();
-        }
+            } catch (RuntimeException exception) {
+                    exception.getMessage();
+            }
 
         mostrar("---------- Transferencia -----------");
         banco.transferir(cuenta1, cuenta2, new BigDecimal(500));
@@ -238,6 +239,23 @@ class CuentaTest {
         properties.forEach((k, v) -> {
             System.out.println(k + ": " + v);
         });
+    }
+
+
+    @Test
+    @EnabledIfSystemProperty(named ="java.version", matches = "11.0.15")
+    void testJavaVersion(){
+         
+        mostrar("Lanzando metodo porque tenemos la version de Java 11.0.15");
+    }
+
+
+    @Test
+    @EnabledIfSystemProperty(named ="user.name", matches = "marti")
+    void testUserName(){
+         
+        mostrar("Lanzando metodo porque user.namse = marti");
+
     }
 
 }
